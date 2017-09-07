@@ -12,5 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+
+Route::group(['prefix'=>'produtos'], function(){
+    Route::post('cadastrar', 'ProdutoController@cadastrar');
+    Route::get('/', 'ProdutoController@listar');
+    Route::get('deletar/{id}', 'ProdutoController@deletar')->where('id','[0-9]+');
+    Route::get('detalhes/{id}', 'ProdutoController@detalhes')->where('id','[0-9]+');
+
+});
+    
+
